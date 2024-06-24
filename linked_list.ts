@@ -39,7 +39,7 @@
                 this.head = node
             }
 
-            // if head is null set new node to head
+            // if currentNode is null set new node to head
             // this block will work in the first time when linked list is empty
             if (!this.currentNode) {
                 this.currentNode = node
@@ -83,6 +83,81 @@
 
         }
 
+        // add a node to head
+        prepend(param: T) {
+            // creat new node by param
+            const newNode = new Node(param)
+
+            // check if head is null, then set newNode to head
+            if (!this.head) {
+                // set newNode to head
+                this.head = newNode
+                return
+            }
+
+            // set node.setNext = head cause new node will be head
+            newNode.setNextNode = this.head
+
+            // set new node to head
+            this.head = newNode
+        }
+
+        // search node
+        search(param: T) {
+            // first time current node will be head
+            let currentNode = this.head
+
+            // the loop will be run untill current node.getNextNode !== null
+            while (currentNode?.getNextNode) {
+
+                // if currentNode.getNodeData === param, means this searchable item is found, then return the Data of current node
+                if (currentNode.getNodeData === param) {
+                    return currentNode.getNodeData
+                }
+
+                // otherwise current node will be next node of current node
+                currentNode = currentNode.getNextNode
+            }
+        }
+
+        // add data after specific node
+        insert(data: T, dataOfSpecificNode: T) {
+            // creat newNode using data
+            const newNode = new Node(data)
+
+            // first time current node will be this.head
+            let currentNode = this.head
+
+            // first time prev node will be this.head
+            // let prevtNode: Node<T> | null = null
+
+            // the loop will be run untill the currentNode !== null
+            while (currentNode?.getNextNode) {
+                // check if currentNode.getNodeData === dataOfSpecificNode, means the specific node found, then add newNode after specificNode
+                if (currentNode.getNodeData === dataOfSpecificNode) {
+                    // set newNode after specific node
+                    newNode.setNextNode = currentNode.getNextNode
+                    return currentNode.setNextNode = newNode
+                }
+
+                currentNode = currentNode.getNextNode
+            }
+
+            // if this line exicute means specific node is not fount, then set the newNode as last node means set newNode to current node or this.head cause in this line current node will be the lastNode or there is no data in linked list
+
+            // if this.head === null menas there is no data in the LinkedList, then set newNode to this.head
+            if (!this.head) {
+                return this.head === newNode
+            }
+
+            // if this line exicute, means current node is last node, then set newNode to currentNode.setNextNode 
+            if (currentNode) {
+                return currentNode.setNextNode = newNode
+            }
+
+
+        }
+
         // function for print add data in linked list
         printLinkedList() {
             let node = this.head
@@ -102,6 +177,7 @@
     linked_list.addNode(4)
     linked_list.addNode(3)
     linked_list.addNode(2)
-    linked_list.removeNode(4)
+    linked_list.prepend(1)
+    linked_list.insert(7, 5)
     linked_list.printLinkedList()
 }
