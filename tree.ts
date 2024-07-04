@@ -57,11 +57,11 @@
         const nodeList: T[] = []
 
         // creat function for travarse tree recursively
-        const preOrder = (node: Node<T>) => {
+        const inOrder = (node: Node<T>) => {
 
             // if node.getLeftNode !== null, then travarse the subtree consider the root node is node.getLeftNode
             if (node.getLeftNode) {
-                preOrder(node.getLeftNode)
+                inOrder(node.getLeftNode)
             }
 
             // add node.getData to nodeList
@@ -69,10 +69,10 @@
 
             // if node.getRighttNode !== null, then travarse the subtree consider the root node is node.getRighttNode
             if (node.getRightNode) {
-                preOrder(node.getRightNode)
+                inOrder(node.getRightNode)
             }
         }
-        preOrder(node)
+        inOrder(node)
         return nodeList
     }
 
@@ -81,22 +81,22 @@
         const nodeList: T[] = []
 
         // creat function for travarse tree recursively
-        const preOrder = (node: Node<T>) => {
+        const postOrder = (node: Node<T>) => {
 
             // if node.getLeftNode !== null, then travarse the subtree consider the root node is node.getLeftNode
             if (node.getLeftNode) {
-                preOrder(node.getLeftNode)
+                postOrder(node.getLeftNode)
             }
 
             // if node.getRighttNode !== null, then travarse the subtree consider the root node is node.getRighttNode
             if (node.getRightNode) {
-                preOrder(node.getRightNode)
+                postOrder(node.getRightNode)
             }
 
             // add node.getData to nodeList
             nodeList.push(node.getNodeData)
         }
-        preOrder(node)
+        postOrder(node)
         return nodeList
     }
 
