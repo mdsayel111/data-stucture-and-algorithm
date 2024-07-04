@@ -52,6 +52,54 @@
         return nodeList
     }
 
+    const travarseInOrder = <T>(node: Node<T>) => {
+        // travarse element list
+        const nodeList: T[] = []
+
+        // creat function for travarse tree recursively
+        const preOrder = (node: Node<T>) => {
+
+            // if node.getLeftNode !== null, then travarse the subtree consider the root node is node.getLeftNode
+            if (node.getLeftNode) {
+                preOrder(node.getLeftNode)
+            }
+
+            // add node.getData to nodeList
+            nodeList.push(node.getNodeData)
+
+            // if node.getRighttNode !== null, then travarse the subtree consider the root node is node.getRighttNode
+            if (node.getRightNode) {
+                preOrder(node.getRightNode)
+            }
+        }
+        preOrder(node)
+        return nodeList
+    }
+
+    const travarsePostOrder = <T>(node: Node<T>) => {
+        // travarse element list
+        const nodeList: T[] = []
+
+        // creat function for travarse tree recursively
+        const preOrder = (node: Node<T>) => {
+
+            // if node.getLeftNode !== null, then travarse the subtree consider the root node is node.getLeftNode
+            if (node.getLeftNode) {
+                preOrder(node.getLeftNode)
+            }
+
+            // if node.getRighttNode !== null, then travarse the subtree consider the root node is node.getRighttNode
+            if (node.getRightNode) {
+                preOrder(node.getRightNode)
+            }
+
+            // add node.getData to nodeList
+            nodeList.push(node.getNodeData)
+        }
+        preOrder(node)
+        return nodeList
+    }
+
 
     const one = new Node(1)
     const two = new Node(2)
@@ -62,5 +110,7 @@
     three.setLeftNode = four
 
     console.log(travarsePreOrder(one));
+    console.log(travarseInOrder(one));
+    console.log(travarsePostOrder(one));
 
 }
